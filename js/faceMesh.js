@@ -62,12 +62,11 @@ faceMesh.onResults(onResultsFaceMesh);
 const camera = new Camera(video2, {
   onFrame: async () => {
     await faceMesh.send({ image: video2 });
-  },
-  width: 480,
-  height: 480
+  }
 });
 camera.start();
-
+out2.width=camera.h.width
+out2.height=camera.h.height
 new ControlPanel(controlsElement2, {
   selfieMode: true,
   maxNumFaces: 1,
