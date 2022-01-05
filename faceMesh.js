@@ -81,3 +81,24 @@ new ControlPanel(controlsElement2, {
     video2.classList.toggle('selfie', options.selfieMode);
     faceMesh.setOptions(options);
   });
+  
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker
+            // 注册 service worker
+            .register('sw.js', {
+                scope: '/js/'
+            })
+            .then(function(registration) {
+                // 注册成功
+                // console.log(
+                //     'ServiceWorker registration successful with scope: ',
+                //     registration.scope
+                // );
+            })
+            .catch(function(err) {
+                // 注册失败:(
+                console.log('ServiceWorker registration failed: ', err);
+            });
+    });
+}
